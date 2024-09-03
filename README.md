@@ -2,8 +2,8 @@
 
 ## Getting Started
 
-* [TODO - Download InterLivre](https://github.com/vimhalen)
-* [TODO - Demo Video](https://github.com/vimhalen)
+* [Download InterLivre](https://github.com/vimhalen/InterLivre/releases/latest)
+* [Demo Video](https://www.youtube.com/watch?v=kZqpZ60LSZA)
 
 ## About InterLivre
 
@@ -23,8 +23,8 @@ It turned out to be a bit too difficult for me to follow the French version enti
 Some parts were fine, but others were tricky, and I would lose track of the story here and there
 unless I really tried hard to stay focused.
 
-I thought it would help if I could switch back and forth between the English and French versions of the book while listening. 
-That way, I would have an easier time staying engaged with the story. 
+I thought it would be helpful if I could switch back and forth between the English and French versions of the book while listening. 
+That way, it would be easier to stay engaged with the story. 
 That's why I made InterLivre.
 
 ### Limitations
@@ -45,9 +45,9 @@ I wrote InterLivre over a couple of weekends in summer, 2024. It's a quick hobby
 I'm posting it in case it can be helpful to anyone else. Be warned, it's very lightly tested software... 
 use it at your own risk!
 
-Also, I'm practising with interleaved recordings like this as a personal experiment. 
-I don't know if this approach will be particularly effective or not. I've listened to two interleaved novels and I think
-this is helpful for me but please use your own best judgement.
+Also, I don't know if listening to interleaved audiobooks like this will be a particularly effective way of practising or not. 
+I'm experimenting with it. So far, I've listened to two interleaved novels and I think
+this is helpful for me, but it's still too early to know.
 
 ## Dependencies
 InterLivre makes use of the following libraries/packages, which are open source and free (and awesome):
