@@ -44,9 +44,10 @@ class ILModel:
 
     @dst_name.setter
     def dst_name(self, name):
-        self._dst_name = name
-        pub.sendMessage("NotifyPropertyChanged", prop="dst_name")
-        pub.sendMessage("DstNameChanged", text=name)
+        if name != self._dst_name:
+            self._dst_name = name
+            pub.sendMessage("NotifyPropertyChanged", prop="dst_name")
+            pub.sendMessage("DstNameChanged", text=name)
 
     @property
     def dst_audio_format(self):

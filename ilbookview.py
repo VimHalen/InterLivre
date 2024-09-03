@@ -70,6 +70,7 @@ class ILFrame(wx.Frame):
     def StartProgress(self):
         self.prgDlg = wx.ProgressDialog("Interleaving audiobooks", self.statusMsg, parent=self,
                                         style=0 | wx.PD_APP_MODAL | wx.PD_CAN_ABORT | wx.PD_ELAPSED_TIME)
+        self.prgDlg.Fit()
 
     def EndProgress(self, userCancelled):
         self.prgDlg.Destroy()
@@ -510,7 +511,7 @@ class ILTextWidget(wx.Panel):
         pub.sendMessage(f"DirWidgetChanging")
 
     def UpdateText(self, text):
-        self.pathCtrl.SetLabelText(text)
+        self.pathCtrl.SetValue(text)
 
     def Clear(self):
         self.pathCtrl.Clear()
