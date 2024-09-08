@@ -11,7 +11,7 @@ InterLivreApp@gmail.com
 APP_NAME = "InterLivre"
 AUTHOR = "VimHalen"
 COPYRIGHT = "2024"
-VERSION = "2024.09.02"
+VERSION = "2024.09.07"
 CONTACT = "InterLivreApp@gmail.com"
 LICENSE_FILE = "LICENSE"
 LICENSE_URL = "https://www.gnu.org/licenses/gpl-3.0.en.html"
