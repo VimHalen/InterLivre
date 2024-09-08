@@ -268,19 +268,19 @@ class ILDirSelectPage(wx.Panel, ILForm):
             self.isReady = pathsReady
             pub.sendMessage("PathsReadyChanged", isReady=self.isReady)
 
-
 class ILFilesFoundPage(wx.Panel, ILForm):
     def __init__(self, parent):
         wx.Panel.__init__(self, parent)
         ILForm.__init__(self, hasMandatoryFields=False)
         self.files = [[], []]
+        self.filesDisplay = [[], []]
         self.dirty = False
 
         # Widgets
         book1Header = wx.StaticText(self, wx.ID_ANY, "Book 1")
         book2Header = wx.StaticText(self, wx.ID_ANY, "Book 2")
-        self.book1 = wx.RearrangeList(self, items=self.files[0])
-        self.book2 = wx.RearrangeList(self, items=self.files[1])
+        self.book1 = wx.RearrangeList(self, items=self.filesDisplay[0])
+        self.book2 = wx.RearrangeList(self, items=self.filesDisplay[1])
         noteText = wx.StaticText(self, wx.ID_ANY, "Note, selected files in the two lists will be paired up in sequence")
         font = wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.LIGHT)
         noteText.SetFont(font)
@@ -301,17 +301,40 @@ class ILFilesFoundPage(wx.Panel, ILForm):
         grid.Add(noteText, flag=wx.ALIGN_LEFT)
         self.SetAutoLayout(1)
         self.SetSizerAndFit(grid)
+        self.minWidth = (self.GetMinWidth() / 2)
+
+    def CollapseStrings(self, filelist):
+        res = []
+        for f in filelist:
+            if len(f) < 5:
+                # 5 always fits
+                continue
+            # Begin deleting chars from the middle and proceed outwards
+            fLo = f[:int(len(f)/2)-1]
+            fHi = f[int(len(f)/2)+2:]
+            while self.GetTextExtent(fLo + "..." + fHi)[0] >= self.minWidth:
+                fLo = fLo[0:-1]
+                fHi = fHi[1:]
+            truncLen = len(fLo) + len(fHi) + 3
+            if truncLen != len(f):
+                res.append(fLo + "..." + fHi)
+            else:
+                res.append(f)
+        return res
 
     def OnFilesChanged(self, files):
         if len(files) == 2:
             self.files = files
-            self.book1.Set(files[0])
-            self.book2.Set(files[1])
-            self.book1.SetCheckedItems(range(0, len(self.files[0])))
-            self.book2.SetCheckedItems(range(0, len(self.files[1])))
+            self.filesDisplay[0] = self.CollapseStrings(self.files[0])
+            self.filesDisplay[1] = self.CollapseStrings(self.files[1])
+            self.book1.Set(self.filesDisplay[0])
+            self.book2.Set(self.filesDisplay[1])
+            self.book1.SetCheckedItems(range(0, len(self.filesDisplay[0])))
+            self.book2.SetCheckedItems(range(0, len(self.filesDisplay[1])))
 
     def Submit(self):
-        fileList = [list(self.book1.GetCheckedStrings()), list(self.book2.GetCheckedStrings())]
+        fileList = [[self.files[0][i] for i in self.book1.GetCheckedItems()],
+                    [self.files[1][i] for i in self.book1.GetCheckedItems()]]
         if len(fileList[0]) != len(fileList[1]):
             dlg = wx.MessageDialog(None, "Different number of files selected for Books 1 and 2.",
                                    "File count error", wx.OK | wx.ICON_ERROR)
