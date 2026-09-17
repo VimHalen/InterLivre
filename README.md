@@ -11,22 +11,6 @@ InterLivre is a desktop application for combining audiobook recordings.
 InterLivre takes two recordings of an audiobook, each in a different language, 
 and creates a new version that switches back and forth between the two recordings every so often.
 
-### Motivation
-
-I've been practicing French during my commute to work by listening to podcasts for 
-intermediate-level French language learners.
-The podcasts are all on the short side though and I thought it would be fun to try
-listening to something longer in French, like a novel.
-
-I chose a novel that I've already read several times in English, so I know the story well, and gave it a try. 
-It turned out to be a bit too difficult for me to follow the French version entirely on its own without getting lost.
-Some parts were fine, but others were tricky, and I would lose track of the story here and there
-unless I really tried hard to stay focused.
-
-I thought it would be helpful if I could switch back and forth between the English and French versions of the book while listening. 
-That way, it would be easier to stay engaged with the story. 
-That's why I made InterLivre.
-
 ### Limitations
 
 * Background music: InterLivre works by finding quiet moments in the recordings, 
@@ -41,16 +25,11 @@ but it's not ideal.
 the other, then that will be true for the output recording too.  
 
 ## Disclaimers
-I wrote InterLivre over a couple of weekends in summer, 2024. It's a quick hobby project and primarily meant for my own use.
-I'm posting it in case it can be helpful to anyone else. Be warned, it's very lightly tested software... 
-use it at your own risk!
-
-Also, I don't know if listening to interleaved audiobooks like this will be a particularly effective way of practising or not. 
-I'm experimenting with it. So far, I've listened to two interleaved novels and I think
-this is helpful for me, but it's still too early to know.
+I wrote InterLivre over a couple of weekends in summer, 2024. It's a quick hobby project and mainly for my own use.
+I'm posting it in case it can be helpful to anyone else. It's very lightly tested software... 
 
 ## Dependencies
-InterLivre makes use of the following libraries/packages, which are open source and free (and awesome):
+InterLivre makes use of the following opensource and free libraries/packages:
 
 * [FFmpeg](https://www.ffmpeg.org)
   * [FFmpeg license page](https://www.ffmpeg.org/legal.html)
